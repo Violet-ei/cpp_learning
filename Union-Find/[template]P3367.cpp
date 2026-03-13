@@ -1,4 +1,4 @@
-// 2026.3.13
+// Luogu P3367
 
 #include<iostream>
 using namespace std;
@@ -22,16 +22,17 @@ void merge(int u, int v)
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    // int n, m;
-    // cin >> n >> m;
-    // for (int i = 1; i <= n; i++)
-    //     fa[i] = i;
-    // int op, u, v;
-    // while (m--) {
-    //     cin >> op >> u >> v;
-    //     if (op == 1)
-    //         merge(u, v);
-    //     else
-    //         find(u) == find(v) ? cout << "Y\n" : cout << "N\n";
+    int n, m;
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        fa[i] = i;
+    int op, u, v;
+    while (m--) {
+        cin >> op >> u >> v;
+        if (op == 1)
+            merge(u, v);
+        else
+            find(u) == find(v) ? cout << "Y\n" : cout << "N\n";
+    }
     return 0;
 }
