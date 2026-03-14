@@ -1,10 +1,8 @@
-// Luogu P3367
-
 #include<iostream>
 using namespace std;
 
 const int N = 200001;
-int fa[N];
+int fa[N], siz[N];
 
 int find(int u) {
     if (fa[u] == u)
@@ -12,11 +10,15 @@ int find(int u) {
     return fa[u] = find(fa[u]);
 }
 
-void merge(int u, int v)
-{
-    int fu = find(u), fv = find(v);
-    if (fu != fv)
-        fa[fu] = fv;
+void merge(int u, int v) {
+    u = find(u), v = find(v);
+    if (u == v)
+        return;
+    if (siz[u] > siz[v])
+        swap(u, v);
+    else if (siz[u] == siz[v])
+        siz[v]++;
+    fa[u] = v;
 }
 
 int main() {
